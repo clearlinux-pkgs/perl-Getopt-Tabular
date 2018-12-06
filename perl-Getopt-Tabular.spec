@@ -81,8 +81,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.0/Getopt/Tabular.pm
-/usr/lib/perl5/vendor_perl/5.28.0/Getopt/Tabular.pod
+/usr/lib/perl5/vendor_perl/5.28.1Getopt/Tabular.pm
+/usr/lib/perl5/vendor_perl/5.28.1Getopt/Tabular.pod
 
 %files dev
 %defattr(-,root,root,-)
