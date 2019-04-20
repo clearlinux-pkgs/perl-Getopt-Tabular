@@ -4,11 +4,11 @@
 #
 Name     : perl-Getopt-Tabular
 Version  : 0.3
-Release  : 9
+Release  : 10
 URL      : https://cpan.metacpan.org/authors/id/G/GW/GWARD/Getopt-Tabular-0.3.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GW/GWARD/Getopt-Tabular-0.3.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libg/libgetopt-tabular-perl/libgetopt-tabular-perl_0.3-2.debian.tar.xz
-Summary  : No detailed summary available
+Summary  : Table-driven argument parsing
 Group    : Development/Tools
 License  : Artistic-1.0 GPL-1.0
 Requires: perl-Getopt-Tabular-license = %{version}-%{release}
@@ -25,6 +25,7 @@ Perl itself.
 Summary: dev components for the perl-Getopt-Tabular package.
 Group: Development
 Provides: perl-Getopt-Tabular-devel = %{version}-%{release}
+Requires: perl-Getopt-Tabular = %{version}-%{release}
 
 %description dev
 dev components for the perl-Getopt-Tabular package.
@@ -43,7 +44,7 @@ license components for the perl-Getopt-Tabular package.
 cd ..
 %setup -q -T -D -n Getopt-Tabular-0.3 -b 1
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Getopt-Tabular-0.3/deblicense/
+cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Getopt-Tabular-0.3/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
