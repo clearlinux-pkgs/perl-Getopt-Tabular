@@ -4,14 +4,15 @@
 #
 Name     : perl-Getopt-Tabular
 Version  : 0.3
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/G/GW/GWARD/Getopt-Tabular-0.3.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GW/GWARD/Getopt-Tabular-0.3.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libg/libgetopt-tabular-perl/libgetopt-tabular-perl_0.3-2.debian.tar.xz
-Summary  : Table-driven argument parsing
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Artistic-1.0 GPL-1.0
 Requires: perl-Getopt-Tabular-license = %{version}-%{release}
+Requires: perl-Getopt-Tabular-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -39,18 +40,28 @@ Group: Default
 license components for the perl-Getopt-Tabular package.
 
 
+%package perl
+Summary: perl components for the perl-Getopt-Tabular package.
+Group: Default
+Requires: perl-Getopt-Tabular = %{version}-%{release}
+
+%description perl
+perl components for the perl-Getopt-Tabular package.
+
+
 %prep
 %setup -q -n Getopt-Tabular-0.3
-cd ..
-%setup -q -T -D -n Getopt-Tabular-0.3 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/libgetopt-tabular-perl_0.3-2.debian.tar.xz
+cd %{_builddir}/Getopt-Tabular-0.3
 mkdir -p deblicense/
-cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Getopt-Tabular-0.3/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/Getopt-Tabular-0.3/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -60,7 +71,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -69,7 +80,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Getopt-Tabular
-cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Getopt-Tabular/deblicense_copyright
+cp %{_builddir}/Getopt-Tabular-0.3/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Getopt-Tabular/bea1a949258e0c2fb224e563838c4efd303f5c43
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -82,8 +93,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Getopt/Tabular.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Getopt/Tabular.pod
 
 %files dev
 %defattr(-,root,root,-)
@@ -91,4 +100,9 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Getopt-Tabular/deblicense_copyright
+/usr/share/package-licenses/perl-Getopt-Tabular/bea1a949258e0c2fb224e563838c4efd303f5c43
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Getopt/Tabular.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Getopt/Tabular.pod
