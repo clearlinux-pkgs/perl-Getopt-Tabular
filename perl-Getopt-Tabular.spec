@@ -4,7 +4,7 @@
 #
 Name     : perl-Getopt-Tabular
 Version  : 0.3
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/G/GW/GWARD/Getopt-Tabular-0.3.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GW/GWARD/Getopt-Tabular-0.3.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libg/libgetopt-tabular-perl/libgetopt-tabular-perl_0.3-2.debian.tar.xz
@@ -80,7 +80,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Getopt-Tabular
-cp %{_builddir}/Getopt-Tabular-0.3/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Getopt-Tabular/bea1a949258e0c2fb224e563838c4efd303f5c43
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-Getopt-Tabular/bea1a949258e0c2fb224e563838c4efd303f5c43
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -104,5 +104,5 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/Getopt/Tabular.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Getopt/Tabular.pod
+/usr/lib/perl5/vendor_perl/5.30.2/Getopt/Tabular.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Getopt/Tabular.pod
