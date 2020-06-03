@@ -4,7 +4,7 @@
 #
 Name     : perl-Getopt-Tabular
 Version  : 0.3
-Release  : 14
+Release  : 15
 URL      : https://cpan.metacpan.org/authors/id/G/GW/GWARD/Getopt-Tabular-0.3.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GW/GWARD/Getopt-Tabular-0.3.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libg/libgetopt-tabular-perl/libgetopt-tabular-perl_0.3-2.debian.tar.xz
@@ -104,5 +104,5 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.2/Getopt/Tabular.pm
-/usr/lib/perl5/vendor_perl/5.30.2/Getopt/Tabular.pod
+/usr/lib/perl5/vendor_perl/5.30.3/Getopt/Tabular.pm
+/usr/lib/perl5/vendor_perl/5.30.3/Getopt/Tabular.pod
